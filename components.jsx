@@ -118,7 +118,7 @@ var CommitsComponent = React.createClass({
 
     repoChange: function(event) {
         this.stopTimeouts();
-        this.setState({'repo': event.target.value});
+        this.setState({'repo': event.target.value, 'branch': 'master'});
         this.getCommits(false);
         this.getBranches();
     },
