@@ -86,7 +86,6 @@ var CommitsComponent = React.createClass({
         {
             $.get('https://api.github.com/repos/' + this.state.repo + '/commits?sha=' + branch,
               (data, textStatus, request) =>{
-                console.log('success!')
                 this.setState({ 'commits': data, 'apiRemaining': request.getResponseHeader('X-RateLimit-Remaining'), 'apiReset': parseInt(request.getResponseHeader('X-RateLimit-Reset')) * 1000 }) }
             ).fail((response) =>
                 this.setState({ 'apiRemaining': request.getResponseHeader('X-RateLimit-Remaining'), 'apiReset': parseInt(request.getResponseHeader('X-RateLimit-Reset')) * 1000 })
@@ -125,7 +124,6 @@ var CommitsComponent = React.createClass({
     },
 
     branchChange: function(branch) {
-        console.log('branch changed to ' + branch);
         this.stopTimeouts();
         this.setState({'branch': branch});
         this.getCommits(true, branch);
